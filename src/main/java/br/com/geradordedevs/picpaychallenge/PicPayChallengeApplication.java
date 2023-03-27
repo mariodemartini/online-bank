@@ -12,4 +12,9 @@ public class PicPayChallengeApplication {
 		SpringApplication.run(PicPayChallengeApplication.class, args);
 	}
 
+	@Bean
+	public ModelMapper modelMapper(){
+		return new ModelMapper();
+	}
+
 }
