@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  server:
+    container_name: picpay-api
+    entrypoint: [ "sh", "-c", "java -cp app:app/lib/* br.com.geradordedevs.picpaychallenge.PicPayChallengeApplication" ]
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_DATASOURCE_URL=jdbc:mysql://picpay-db:3306/db_picpay?createDatabaseIfNotExist=true
+      - DATABASE_HOST=db-picpay
+      - DATABASE_USER=db_picpay
+      - DATABASE_PASSWORD=123456
+      - DATABASE_NAME=db_picpay
+      - DATABASE_PORT=3306
+
+    depends_on:
+      - db-picpay
+
+  db-picpay:
+    image: mysql:8.0
+    container_name: picpay-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db_picpay
+      - MYSQL_USER=db_picpay
+      - MYSQL_PASSWORD=123456
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./data/db:/data/db
