@@ -1,6 +1,10 @@
 package br.com.geradordedevs.picpaychallenge.services.impl;
 
 import br.com.geradordedevs.picpaychallenge.entities.UserEntity;
+import br.com.geradordedevs.picpaychallenge.exceptions.DocumentException;
+import br.com.geradordedevs.picpaychallenge.exceptions.EmailException;
+import br.com.geradordedevs.picpaychallenge.exceptions.enums.DocumentEnum;
+import br.com.geradordedevs.picpaychallenge.exceptions.enums.EmailEnum;
 import br.com.geradordedevs.picpaychallenge.repositories.UserRepository;
 import br.com.geradordedevs.picpaychallenge.services.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,9 +28,9 @@ public class UserServiceImpl implements UserService {
     public UserEntity saveUser(UserEntity userEntity) throws Exception{
         log.info("save a new user {}: ", userEntity);
         if(userRepository.findByEmail(userEntity.getEmail()) != null) {
-            throw new Exception("try another email");
+            throw new EmailException(EmailEnum.INVALID_EMAIL);
         } else if(userRepository.findByDocumentNumber(userEntity.getDocumentNumber()) != null){
-            throw new Exception("try another document");
+            throw new DocumentException(DocumentEnum.INVALID_DOCUMENT);
         }
         return userRepository.save(userEntity);
     }

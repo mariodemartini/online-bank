@@ -5,6 +5,8 @@ import br.com.geradordedevs.picpaychallenge.dtos.requests.UserRequestDTO;
 import br.com.geradordedevs.picpaychallenge.dtos.responses.UserResponseDTO;
 import br.com.geradordedevs.picpaychallenge.entities.UserEntity;
 import br.com.geradordedevs.picpaychallenge.enums.DocumentTypeEnum;
+import br.com.geradordedevs.picpaychallenge.exceptions.TransactionException;
+import br.com.geradordedevs.picpaychallenge.exceptions.enums.TransactionEnum;
 import br.com.geradordedevs.picpaychallenge.facades.UserFacade;
 import br.com.geradordedevs.picpaychallenge.mappers.UserMapper;
 import br.com.geradordedevs.picpaychallenge.services.UserService;
@@ -55,17 +57,20 @@ public class UserFacadeImpl implements UserFacade {
         BigDecimal value = transactionRequestDTO.getValue();
 
         UserEntity userPayer = userService.findById(idPayer);
-        if(userPayer.getDocumentTypeEnum() == DocumentTypeEnum.CNPF){
-            throw new Exception("invalid transaction");
-        }
         UserEntity userPayee = userService.findById(idPayee);
 
-        userPayer.setId(idPayer);
-        userPayer.setBalance(userPayer.getBalance().subtract(value));
-        userService.updateUser(idPayer, userPayer);
+        if(userPayer.getDocumentTypeEnum() == DocumentTypeEnum.CNPF){
+            throw new TransactionException(TransactionEnum.INVALID_TRANSACTION);
+        } else if (userPayer.getBalance().compareTo(value) < 0) {
+            throw new TransactionException(TransactionEnum.INVALID_TRANSACTION);
+        } else{
+            userPayer.setId(idPayer);
+            userPayer.setBalance(userPayer.getBalance().subtract(value));
+            userService.updateUser(idPayer, userPayer);
 
-        userPayee.setId(idPayee);
-        userPayee.setBalance(userPayee.getBalance().add(value));
-        userService.updateUser(idPayee, userPayee);
+            userPayee.setId(idPayee);
+            userPayee.setBalance(userPayee.getBalance().add(value));
+            userService.updateUser(idPayee, userPayee);
+        }
     }
 }
