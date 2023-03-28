@@ -1,5 +1,6 @@
 package br.com.geradordedevs.picpaychallenge.controllers;
 
+import br.com.geradordedevs.picpaychallenge.dtos.requests.TransactionRequestDTO;
 import br.com.geradordedevs.picpaychallenge.dtos.requests.UserRequestDTO;
 import br.com.geradordedevs.picpaychallenge.dtos.responses.UserResponseDTO;
 import br.com.geradordedevs.picpaychallenge.facades.UserFacade;
@@ -36,5 +37,10 @@ public class UserController {
     @DeleteMapping("{id}")
     public void deleteUser(@PathVariable Long id){
         userFacade.deleteUser(id);
+    }
+
+    @PostMapping("/transaction")
+    public void transaction(@RequestBody TransactionRequestDTO transactionRequestDTO) throws Exception {
+        userFacade.transaction(transactionRequestDTO);
     }
 }
