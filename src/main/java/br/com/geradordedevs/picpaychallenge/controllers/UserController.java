@@ -7,6 +7,8 @@ import br.com.geradordedevs.picpaychallenge.facades.UserFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -15,7 +17,7 @@ public class UserController {
     private UserFacade userFacade;
 
     @PostMapping
-    public UserResponseDTO saveUser(@RequestBody UserRequestDTO userRequestDTO) throws Exception {
+    public UserResponseDTO saveUser(@Valid @RequestBody UserRequestDTO userRequestDTO) throws Exception {
         return userFacade.saveUser(userRequestDTO);
     }
 
@@ -30,7 +32,7 @@ public class UserController {
     }
 
     @PutMapping("{id}")
-    public UserResponseDTO updateUser(@PathVariable Long id, @RequestBody UserRequestDTO userRequestDTO){
+    public UserResponseDTO updateUser(@PathVariable Long id,@Valid @RequestBody UserRequestDTO userRequestDTO){
         return userFacade.updateUser(id, userRequestDTO);
     }
 
@@ -40,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping("/transaction")
-    public void transaction(@RequestBody TransactionRequestDTO transactionRequestDTO) throws Exception {
+    public void transaction(@Valid @RequestBody TransactionRequestDTO transactionRequestDTO) throws Exception {
         userFacade.transaction(transactionRequestDTO);
     }
 }
