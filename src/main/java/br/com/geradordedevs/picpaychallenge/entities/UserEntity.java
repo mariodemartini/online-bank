@@ -1,5 +1,6 @@
 package br.com.geradordedevs.picpaychallenge.entities;
 
+import br.com.geradordedevs.picpaychallenge.enums.DocumentTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,8 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String cpf;
+    private DocumentTypeEnum documentTypeEnum;
+    private String documentNumber;
     private String email;
     private String password;
     private BigDecimal balance;
@@ -27,9 +29,10 @@ public class UserEntity {
         return "UserEntity{" +
                 "id=" + id +
                 ", name=" + name +
-                ", cpf='" + cpf + '\'' +
+                ", documentType='" + documentTypeEnum + '\'' +
+                ", documentNumber='" + documentNumber + '\'' +
                 ", email=" + email +
-                ", saldo='" + balance + '\'' +
+                ", balance='" + balance + '\'' +
                 '}';
     }
 
