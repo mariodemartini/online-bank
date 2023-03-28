@@ -1,6 +1,7 @@
 package br.com.geradordedevs.picpaychallenge.services.impl;
 
 import br.com.geradordedevs.picpaychallenge.entities.UserEntity;
+import br.com.geradordedevs.picpaychallenge.enums.DocumentTypeEnum;
 import br.com.geradordedevs.picpaychallenge.exceptions.DocumentException;
 import br.com.geradordedevs.picpaychallenge.exceptions.EmailException;
 import br.com.geradordedevs.picpaychallenge.exceptions.enums.DocumentEnum;

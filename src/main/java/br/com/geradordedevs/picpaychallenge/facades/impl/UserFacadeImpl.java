@@ -59,7 +59,7 @@ public class UserFacadeImpl implements UserFacade {
         UserEntity userPayer = userService.findById(idPayer);
         UserEntity userPayee = userService.findById(idPayee);
 
-        if(userPayer.getDocumentTypeEnum() == DocumentTypeEnum.CNPF){
+        if(userPayer.getDocumentTypeEnum() == DocumentTypeEnum.CNPJ){
             throw new TransactionException(TransactionEnum.INVALID_TRANSACTION);
         } else if (userPayer.getBalance().compareTo(value) < 0) {
             throw new TransactionException(TransactionEnum.INVALID_TRANSACTION);
