@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService {
         log.info("save a new user {}: ", userEntity);
         if(userRepository.findByEmail(userEntity.getEmail()) != null) {
             throw new Exception("try another email");
-        } else if(userRepository.findByCpf(userEntity.getCpf()) != null){
-            throw new Exception("try another cpf");
+        } else if(userRepository.findByDocumentNumber(userEntity.getDocumentNumber()) != null){
+            throw new Exception("try another document");
         }
         return userRepository.save(userEntity);
     }
