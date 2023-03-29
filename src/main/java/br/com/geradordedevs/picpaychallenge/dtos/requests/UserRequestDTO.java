@@ -1,11 +1,14 @@
 package br.com.geradordedevs.picpaychallenge.dtos.requests;
 
 import br.com.geradordedevs.picpaychallenge.enums.DocumentTypeEnum;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Data
@@ -17,7 +20,6 @@ public class UserRequestDTO {
     @Size(min=2, max=15, message = "invalid size")
     private String name;
 
-    @NotBlank(message = "invalid field")
     private DocumentTypeEnum documentTypeEnum;
 
     @NotBlank(message = "invalid field")

@@ -4,10 +4,9 @@ import br.com.geradordedevs.picpaychallenge.dtos.requests.TransactionRequestDTO;
 import br.com.geradordedevs.picpaychallenge.dtos.requests.UserRequestDTO;
 import br.com.geradordedevs.picpaychallenge.dtos.responses.UserResponseDTO;
 import br.com.geradordedevs.picpaychallenge.facades.UserFacade;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/user")
