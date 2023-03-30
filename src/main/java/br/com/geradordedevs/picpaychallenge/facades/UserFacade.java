@@ -12,6 +12,4 @@ public interface UserFacade {
     UserResponseDTO updateUser(Long id, UserRequestDTO userRequestDTO);
     UserResponseDTO findById(Long id);
     void deleteUser(Long id);
-
-    void transaction(TransactionRequestDTO transactionRequestDTO) throws Exception;
 }
