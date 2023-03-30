@@ -8,6 +8,8 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -21,7 +23,7 @@ public class UserController {
     }
 
     @GetMapping
-    public Iterable<UserResponseDTO> listUsers(){
+    public List<UserResponseDTO> listUsers(){
         return userFacade.getUsers();
     }
 
@@ -40,8 +42,4 @@ public class UserController {
         userFacade.deleteUser(id);
     }
 
-    @PostMapping("/transaction")
-    public void transaction(@Valid @RequestBody TransactionRequestDTO transactionRequestDTO) throws Exception {
-        userFacade.transaction(transactionRequestDTO);
-    }
 }
