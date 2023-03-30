@@ -10,6 +10,7 @@ import br.com.geradordedevs.picpaychallenge.repositories.UserRepository;
 import br.com.geradordedevs.picpaychallenge.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +19,10 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
 
     @Override
     public Iterable<UserEntity> getUsers() {
@@ -32,8 +37,11 @@ public class UserServiceImpl implements UserService {
             throw new EmailException(EmailEnum.INVALID_EMAIL);
         } else if(userRepository.findByDocumentNumber(userEntity.getDocumentNumber()) != null){
             throw new DocumentException(DocumentEnum.INVALID_DOCUMENT);
+        } else{
+            userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+            return userRepository.save(userEntity);
         }
-        return userRepository.save(userEntity);
+
     }
 
     @Override
