@@ -1,6 +1,5 @@
 package br.com.geradordedevs.picpaychallenge.controllers;
 
-import br.com.geradordedevs.picpaychallenge.dtos.requests.TransactionRequestDTO;
 import br.com.geradordedevs.picpaychallenge.dtos.requests.UserRequestDTO;
 import br.com.geradordedevs.picpaychallenge.dtos.responses.UserResponseDTO;
 import br.com.geradordedevs.picpaychallenge.facades.UserFacade;
