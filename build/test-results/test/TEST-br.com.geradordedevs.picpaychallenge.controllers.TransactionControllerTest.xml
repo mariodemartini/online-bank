@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-03T18:15:49" hostname="mario-Inspiron-3501" time="0.075">
+  <properties/>
+  <testcase name="transactionWithWrongRouteShouldRetunNotFound" classname="br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest" time="0.075"/>
+  <system-out><![CDATA[15:15:47.990 [Test worker] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper -- Neither @ContextConfiguration nor @ContextHierarchy found for test class [TransactionControllerTest]: using SpringBootContextLoader
+15:15:47.995 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader -- Could not detect default resource locations for test class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+15:15:47.995 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]: TransactionControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:15:48.035 [Test worker] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper -- Using ContextCustomizers for test class [TransactionControllerTest]: [DisableAutoConfigurationContextCustomizer, DisableObservabilityContextCustomizer, TypeExcludeFiltersContextCustomizer, PropertyMappingContextCustomizer, Customizer, ImportsContextCustomizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer]
+15:15:48.112 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider -- Identified candidate component class: file [/home/mario/Documentos/GitHub/picpay/build/classes/java/main/br/com/geradordedevs/picpaychallenge/PicPayChallengeApplication.class]
+15:15:48.114 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration br.com.geradordedevs.picpaychallenge.PicPayChallengeApplication for test class br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest
+15:15:48.130 [Test worker] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper -- Using TestExecutionListeners for test class [TransactionControllerTest]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener, ResetMocksTestExecutionListener]
+15:15:48.131 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.132 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.133 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.133 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.135 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.135 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.138 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.138 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.139 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.139 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.141 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener -- Before test class: class [TransactionControllerTest], class annotated with @DirtiesContext [false] with mode [null]
+15:15:48.142 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+15:15:48.142 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.TransactionControllerTest]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-04-03T15:15:48.465-03:00  INFO 53444 --- [    Test worker] b.c.g.p.c.TransactionControllerTest      : Starting TransactionControllerTest using Java 19.0.1 with PID 53444 (started by mario in /home/mario/Documentos/GitHub/picpay)
+2023-04-03T15:15:48.466-03:00  INFO 53444 --- [    Test worker] b.c.g.p.c.TransactionControllerTest      : No active profile set, falling back to 1 default profile: "default"
+2023-04-03T15:15:49.263-03:00  INFO 53444 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'br.com.geradordedevs.picpaychallenge.clients.AuthorizationClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-04-03T15:15:49.967-03:00  INFO 53444 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-04-03T15:15:49.967-03:00  INFO 53444 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-04-03T15:15:49.970-03:00  INFO 53444 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-04-03T15:15:49.991-03:00  INFO 53444 --- [    Test worker] b.c.g.p.c.TransactionControllerTest      : Started TransactionControllerTest in 1.817 seconds (process running for 2.491)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
