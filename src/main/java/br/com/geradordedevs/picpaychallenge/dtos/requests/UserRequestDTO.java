@@ -20,6 +20,7 @@ public class UserRequestDTO {
     @Size(min=2, max=15, message = "invalid size")
     private String name;
 
+    @NotNull
     private DocumentTypeEnum documentTypeEnum;
 
     @NotBlank(message = "invalid field")
