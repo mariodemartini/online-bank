@@ -23,7 +23,7 @@ public class TransactionController {
     }
 
     @GetMapping
-    public List<TransactionResponseDTO> listUsers(){
+    public List<TransactionResponseDTO> listTransactions(){
         return transactionFacade.getTransactions();
     }
 
