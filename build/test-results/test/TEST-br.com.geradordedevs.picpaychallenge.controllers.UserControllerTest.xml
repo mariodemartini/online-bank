@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" tests="38" skipped="0" failures="0" errors="0" timestamp="2023-04-03T14:18:25" hostname="mario-Inspiron-3501" time="0.593">
+  <properties/>
+  <testcase name="saveUserEmailNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.21"/>
+  <testcase name="deleteUserWithWrongRoutShouldReturnNotFound" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.011"/>
+  <testcase name="updateUserDocumentNumberNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.025"/>
+  <testcase name="updateUserBalanceNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.007"/>
+  <testcase name="saveUserPasswordMinShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.009"/>
+  <testcase name="getUsersShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.028"/>
+  <testcase name="saveUserPasswordMaxShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.01"/>
+  <testcase name="updateUserCpfShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.013"/>
+  <testcase name="findByIdWithWrongRoutShouldReturnNotFound" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.007"/>
+  <testcase name="saveUserInvalidEmailShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.01"/>
+  <testcase name="updateUserNameMinShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.009"/>
+  <testcase name="updateUserNameMaxShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.008"/>
+  <testcase name="updateUserDocumentTypeNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.022"/>
+  <testcase name="updateUserPasswordMinShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.009"/>
+  <testcase name="updateUserPasswordMaxShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.01"/>
+  <testcase name="updateUserEmailNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.008"/>
+  <testcase name="updateUserInvalidEmailShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.008"/>
+  <testcase name="saveUserCnpjShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.006"/>
+  <testcase name="saveUserCpfShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.006"/>
+  <testcase name="saveUserPasswordNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.006"/>
+  <testcase name="updateUserCnpjShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.006"/>
+  <testcase name="saveUserWithWrongRoutShouldReturnNotFound" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.005"/>
+  <testcase name="saveUserDocumentNumberNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.006"/>
+  <testcase name="saveUserNameNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.012"/>
+  <testcase name="updateUserDocumentNumberMinShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.008"/>
+  <testcase name="saveUserDocumentNumberMinShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.007"/>
+  <testcase name="findByIdShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.004"/>
+  <testcase name="updateUserDocumentNumberMaxShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.008"/>
+  <testcase name="saveUserDocumentNumberMaxShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.007"/>
+  <testcase name="saveUserNameMinShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.008"/>
+  <testcase name="getUsersWhitWrongRoutShouldReturnNotFound" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.004"/>
+  <testcase name="saveUserNameMaxShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.006"/>
+  <testcase name="updateUserNameNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.007"/>
+  <testcase name="updateUserPasswordNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.006"/>
+  <testcase name="saveUserBalanceNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.005"/>
+  <testcase name="updateUserWithWrongRouteShouldReturnNotFound" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.004"/>
+  <testcase name="saveUserDocumentTypeNullShouldReturnBadRequest" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.012"/>
+  <testcase name="deleteUserShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest" time="0.004"/>
+  <system-out><![CDATA[11:18:22.841 [Test worker] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper -- Neither @ContextConfiguration nor @ContextHierarchy found for test class [UserControllerTest]: using SpringBootContextLoader
+11:18:22.846 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader -- Could not detect default resource locations for test class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+11:18:22.847 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:18:22.890 [Test worker] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper -- Using ContextCustomizers for test class [UserControllerTest]: [DisableAutoConfigurationContextCustomizer, DisableObservabilityContextCustomizer, TypeExcludeFiltersContextCustomizer, PropertyMappingContextCustomizer, Customizer, ImportsContextCustomizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer]
+11:18:22.971 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider -- Identified candidate component class: file [/home/mario/Documentos/GitHub/picpay/build/classes/java/main/br/com/geradordedevs/picpaychallenge/PicPayChallengeApplication.class]
+11:18:22.973 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration br.com.geradordedevs.picpaychallenge.PicPayChallengeApplication for test class br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest
+11:18:22.990 [Test worker] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper -- Using TestExecutionListeners for test class [UserControllerTest]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener, ResetMocksTestExecutionListener]
+11:18:22.992 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:22.993 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:22.994 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:22.995 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:22.996 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:22.996 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:22.998 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:22.998 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:22.998 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:22.998 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:23.001 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener -- Before test class: class [UserControllerTest], class annotated with @DirtiesContext [false] with mode [null]
+11:18:23.002 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+11:18:23.002 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils -- Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.geradordedevs.picpaychallenge.controllers.UserControllerTest]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-04-03T11:18:23.313-03:00  INFO 33012 --- [    Test worker] b.c.g.p.controllers.UserControllerTest   : Starting UserControllerTest using Java 19.0.1 with PID 33012 (started by mario in /home/mario/Documentos/GitHub/picpay)
+2023-04-03T11:18:23.316-03:00  INFO 33012 --- [    Test worker] b.c.g.p.controllers.UserControllerTest   : No active profile set, falling back to 1 default profile: "default"
+2023-04-03T11:18:24.326-03:00  INFO 33012 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'br.com.geradordedevs.picpaychallenge.clients.AuthorizationClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-04-03T11:18:25.151-03:00  INFO 33012 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-04-03T11:18:25.151-03:00  INFO 33012 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-04-03T11:18:25.155-03:00  INFO 33012 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-04-03T11:18:25.182-03:00  INFO 33012 --- [    Test worker] b.c.g.p.controllers.UserControllerTest   : Started UserControllerTest in 2.148 seconds (process running for 2.87)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
