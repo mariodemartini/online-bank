@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.geradordedevs.picpaychallenge.services.UserServiceImplTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-04-04T18:59:30" hostname="mario-Inspiron-3501" time="0.198">
+  <properties/>
+  <testcase name="getUsersShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.services.UserServiceImplTest" time="0.17"/>
+  <testcase name="updateUserShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.services.UserServiceImplTest" time="0.013"/>
+  <testcase name="findByIdShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.services.UserServiceImplTest" time="0.004"/>
+  <testcase name="deleteUserShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.services.UserServiceImplTest" time="0.008"/>
+  <system-out><![CDATA[15:59:30.582 [Test worker] INFO br.com.geradordedevs.picpaychallenge.services.impl.UserServiceImpl -- updating user 1 - new informations: UserEntity{id=1, name=User, documentType='CPF', documentNumber='123.123.123-11', email=test@test.com, balance='100'} 
+15:59:30.596 [Test worker] INFO br.com.geradordedevs.picpaychallenge.services.impl.UserServiceImpl -- find user 1
+15:59:30.599 [Test worker] INFO br.com.geradordedevs.picpaychallenge.services.impl.UserServiceImpl -- delete user 1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -27,6 +27,15 @@ public class UserEntity {
     private String password;
     private BigDecimal balance;
 
+    public UserEntity(String name, DocumentTypeEnum documentTypeEnum, String documentNumber, String email, String password, BigDecimal balance) {
+        this.name = name;
+        this.documentTypeEnum = documentTypeEnum;
+        this.documentNumber = documentNumber;
+        this.email = email;
+        this.password = password;
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         return "UserEntity{" +
