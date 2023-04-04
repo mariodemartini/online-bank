@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.geradordedevs.picpaychallenge.services.TransactionServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-04T18:40:53" hostname="mario-Inspiron-3501" time="0.164">
+  <properties/>
+  <testcase name="getTransactionsShouldReturnOk" classname="br.com.geradordedevs.picpaychallenge.services.TransactionServiceImplTest" time="0.164"/>
+  <system-out><![CDATA[15:40:53.168 [Test worker] INFO br.com.geradordedevs.picpaychallenge.services.impl.TransactionServiceImpl -- listing all transactions
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
