@@ -33,6 +33,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity saveUser(UserEntity userEntity) throws Exception{
         log.info("save a new user {}: ", userEntity);
+
+        userEntity.setDocumentNumber(documentNumberFormatting(userEntity.getDocumentNumber()));
+
         if(userRepository.findByEmail(userEntity.getEmail()) != null) {
             throw new EmailException(EmailEnum.INVALID_EMAIL);
         } else if(userRepository.findByDocumentNumber(userEntity.getDocumentNumber()) != null){
@@ -61,5 +64,11 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long id) {
         log.info("delete user {}", id);
         userRepository.deleteById(id);
+    }
+
+    private String documentNumberFormatting(String documentNumber){
+        documentNumber = (documentNumber.replace(".","")
+                .replace("-","").replace("/","").replace(" ",""));
+        return documentNumber;
     }
 }

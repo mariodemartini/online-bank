@@ -1,3 +1,1 @@
-€15:59:30.582 [Test worker] INFO br.com.geradordedevs.picpaychallenge.services.impl.UserServiceImpl -- updating user 1 - new informations: UserEntity{id=1, name=User, documentType='CPF', documentNumber='123.123.123-11', email=test@test.com, balance='100'} 
-r15:59:30.596 [Test worker] INFO br.com.geradordedevs.picpaychallenge.services.impl.UserServiceImpl -- find user 1
-t15:59:30.599 [Test worker] INFO br.com.geradordedevs.picpaychallenge.services.impl.UserServiceImpl -- delete user 1
+Ý14:14:38.206 [Test worker] INFO br.com.geradordedevs.picpaychallenge.services.impl.UserServiceImpl -- save a new user UserEntity{id=null, name=User, documentType='CPF', documentNumber='null', email=null, balance='100'}: 
