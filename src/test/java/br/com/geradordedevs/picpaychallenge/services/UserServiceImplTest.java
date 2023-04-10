@@ -2,6 +2,10 @@ package br.com.geradordedevs.picpaychallenge.services;
 
 import br.com.geradordedevs.picpaychallenge.entities.UserEntity;
 import br.com.geradordedevs.picpaychallenge.enums.DocumentTypeEnum;
+import br.com.geradordedevs.picpaychallenge.exceptions.DocumentException;
+import br.com.geradordedevs.picpaychallenge.exceptions.EmailException;
+import br.com.geradordedevs.picpaychallenge.exceptions.enums.DocumentEnum;
+import br.com.geradordedevs.picpaychallenge.exceptions.enums.EmailEnum;
 import br.com.geradordedevs.picpaychallenge.repositories.UserRepository;
 import br.com.geradordedevs.picpaychallenge.services.impl.UserServiceImpl;
 import org.junit.Before;
@@ -52,6 +56,8 @@ public class UserServiceImplTest {
         when(userRepository.findAll()).thenReturn(returnListUserEntity());
         when(userRepository.findById(MOCK_ID)).thenReturn(Optional.of(returnObjectUserEntity()));
         when(userRepository.save(returnObjectUserEntity())).thenReturn(returnObjectUserEntity());
+
+      //  when(passwordEncoder.encode(MOCK_PASSWORD)).thenReturn(MOCK_PASSWORD_CRYPT);
     }
 
     @Test
@@ -75,6 +81,11 @@ public class UserServiceImplTest {
         assertEquals(returnObjectUserEntity(), userService.updateUser(MOCK_ID, returnObjectUserEntity()));
     }
 
+    @Test
+    public void saveUserShouldReturnOk() throws Exception{
+        assertEquals(saverUserTest(), userService.saveUser(returnObjectUserEntityPasswordCryptEmailNull()));
+    }
+
     private List<UserEntity> returnListUserEntity() {
         List<UserEntity> list = new ArrayList<>();
         list.add(returnObjectUserEntity());
@@ -86,12 +97,20 @@ public class UserServiceImplTest {
         return new UserEntity(MOCK_ID, MOCK_NAME, MOCK_DOCUMENT_TYPE, MOCK_DOCUMENT_NUMBER, MOCK_EMAIL, MOCK_PASSWORD, MOCK_BALANCE);
     }
 
-    private UserEntity returnObjectUserEntityPasswordCrypt() {
-        return new UserEntity(MOCK_NAME, MOCK_DOCUMENT_TYPE, MOCK_DOCUMENT_NUMBER, MOCK_EMAIL, MOCK_PASSWORD_CRYPT, MOCK_BALANCE);
-    }
-
     private UserEntity returnObjectUserEntityPasswordCryptEmailNull() {
         return new UserEntity(MOCK_NAME, MOCK_DOCUMENT_TYPE, MOCK_DOCUMENT_NUMBER_NULL, MOCK_EMAIL_NULL, MOCK_PASSWORD_CRYPT, MOCK_BALANCE);
+    }
+
+    private UserEntity saverUserTest(){
+        UserEntity userEntity = new UserEntity();
+        if(userRepository.findByEmail(userEntity.getEmail()) != null) {
+            throw new EmailException(EmailEnum.INVALID_EMAIL);
+        } else if(userRepository.findByDocumentNumber(userEntity.getDocumentNumber()) != null){
+            throw new DocumentException(DocumentEnum.INVALID_DOCUMENT);
+        } else{
+            userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+            return userRepository.save(userEntity);
+        }
     }
 
 }
