@@ -43,31 +43,26 @@ public class TransactionFacadeImpl implements TransactionFacade {
         Long idPayer = transactionRequestDTO.getPayer();
         Long idPayee = transactionRequestDTO.getPayee();
         BigDecimal value = transactionRequestDTO.getValue();
-
-        UserEntity userPayer = userService.findById(idPayer);
+        
         UserEntity userPayee = userService.findById(idPayee);
 
-        if(userPayer.getDocumentTypeEnum() == DocumentTypeEnum.CNPJ){
-            throw new TransactionException(TransactionEnum.INVALID_TRANSACTION);
-        } else if (userPayer.getBalance().compareTo(value) < 0) {
-            throw new TransactionException(TransactionEnum.INVALID_TRANSACTION);
-        } else{
-            userPayer.setId(idPayer);
-            userPayer.setBalance(userPayer.getBalance().subtract(value));
-            userMapper.toDTO(userService.updateUser(idPayer, userPayer));
+        UserEntity userPayer = validation(idPayer, value);
 
-            userPayee.setId(idPayee);
-            userPayee.setBalance(userPayee.getBalance().add(value));
-            userMapper.toDTO(userService.updateUser(idPayee, userPayee));
+        userPayer.setId(idPayer);
+        userPayer.setBalance(userPayer.getBalance().subtract(value));
+        userMapper.toDTO(userService.updateUser(idPayer, userPayer));
 
-            TransactionEntity transactionEntity = new TransactionEntity();
-            transactionEntity.setPayer(userPayer.getName());
-            transactionEntity.setPayee(userPayee.getName());
-            transactionEntity.setValue(value);
-            transactionMapper.toDTO(transactionService.saveTransaction(transactionEntity));
+        userPayee.setId(idPayee);
+        userPayee.setBalance(userPayee.getBalance().add(value));
+        userMapper.toDTO(userService.updateUser(idPayee, userPayee));
 
-            return authorizationService.authorization();
-        }
+        TransactionEntity transactionEntity = new TransactionEntity();
+        transactionEntity.setPayer(userPayer.getName());
+        transactionEntity.setPayee(userPayee.getName());
+        transactionEntity.setValue(value);
+        transactionMapper.toDTO(transactionService.saveTransaction(transactionEntity));
+
+        return authorizationService.authorization();
     }
 
     @Override
@@ -78,6 +73,17 @@ public class TransactionFacadeImpl implements TransactionFacade {
     @Override
     public List<TransactionResponseDTO> getTransactions() {
         return transactionMapper.toListDTO(transactionService.getTransactions());
+    }
+
+    private UserEntity validation(Long idPayer, BigDecimal value){
+        UserEntity userPayer = userService.findById(idPayer);
+        if(userPayer.getDocumentTypeEnum() == DocumentTypeEnum.CNPJ){
+            throw new TransactionException(TransactionEnum.INVALID_TRANSACTION);
+        } else if (userPayer.getBalance().compareTo(value) < 0) {
+            throw new TransactionException(TransactionEnum.INVALID_TRANSACTION);
+        } else {
+            return userPayer;
+        }
     }
 
 }
