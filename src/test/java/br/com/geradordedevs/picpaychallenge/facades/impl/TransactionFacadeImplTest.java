@@ -1,11 +1,12 @@
 package br.com.geradordedevs.picpaychallenge.facades.impl;
+
 import br.com.geradordedevs.picpaychallenge.dtos.requests.TransactionRequestDTO;
 import br.com.geradordedevs.picpaychallenge.dtos.responses.AuthorizationResponseDTO;
 import br.com.geradordedevs.picpaychallenge.dtos.responses.TransactionResponseDTO;
+import br.com.geradordedevs.picpaychallenge.dtos.responses.UserResponseDTO;
 import br.com.geradordedevs.picpaychallenge.entities.TransactionEntity;
 import br.com.geradordedevs.picpaychallenge.entities.UserEntity;
 import br.com.geradordedevs.picpaychallenge.enums.DocumentTypeEnum;
-import br.com.geradordedevs.picpaychallenge.facades.TransactionFacade;
 import br.com.geradordedevs.picpaychallenge.mappers.TransactionMapper;
 import br.com.geradordedevs.picpaychallenge.mappers.UserMapper;
 import br.com.geradordedevs.picpaychallenge.services.AuthorizationService;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -70,8 +71,19 @@ public class TransactionFacadeImplTest {
         MockitoAnnotations.openMocks(this);
         when(transactionService.findById(MOCK_ID)).thenReturn(returnObjectTransactionEntity());
         when(transactionService.getTransactions()).thenReturn(returnListTransactionEntity());
+        when(transactionService.saveTransaction(returnObjectTransactionEntity())).thenReturn(returnObjectTransactionEntity());
+
+        when(userService.findById(MOCK_ID_PAYER)).thenReturn(returnObjectUserEntityPayer());
+        when(userService.findById(MOCK_ID_PAYEE)).thenReturn(returnObjectUserEntityPayee());
+        when(userService.updateUser(MOCK_ID_PAYER, returnObjectUserEntityPayer())).thenReturn(returnObjectUserEntityPayer());
+        when(userService.updateUser(MOCK_ID_PAYEE, returnObjectUserEntityPayer())).thenReturn(returnObjectUserEntityPayee());
+
         when(transactionMapper.toDTO(returnObjectTransactionEntity())).thenReturn(returnObjectTransactionResponseDTO());
         when(transactionMapper.toListDTO(returnListTransactionEntity())).thenReturn(returnListTransactionResponseDTO());
+        when(transactionMapper.toDTO(returnObjectTransactionEntity())).thenReturn(returnObjectTransactionResponseDTO());
+
+        when(userMapper.toDTO(returnObjectUserEntityPayer())).thenReturn(returnObjectUserResponseDTOPayer());
+        when(userMapper.toDTO(returnObjectUserEntityPayee())).thenReturn(returnObjectUserResponseDTOPayee());
     }
 
     @Test
@@ -82,6 +94,19 @@ public class TransactionFacadeImplTest {
     @Test
     public void getTransactionsShouldReturnOK() throws Exception{
         assertEquals(returnListTransactionResponseDTO(), transactionFacade.getTransactions());
+    }
+
+    @Test
+    public void transactionShoulReturnOk() throws Exception{
+        assertEquals(returnAuthorizationResponseDTO(), transactionFacade.transaction(returnObjectTransactionRequestDTO()));
+    }
+
+    private AuthorizationResponseDTO returnAuthorizationResponseDTO() {
+            return authorizationService.authorization();
+    }
+
+    private TransactionRequestDTO returnObjectTransactionRequestDTO() {
+        return new TransactionRequestDTO(MOCK_VALUE, MOCK_ID_PAYER, MOCK_ID_PAYEE);
     }
 
     private TransactionResponseDTO returnObjectTransactionResponseDTO(){
@@ -104,6 +129,22 @@ public class TransactionFacadeImplTest {
         list.add(returnObjectTransactionEntity());
 
         return list;
+    }
+
+    private UserEntity returnObjectUserEntityPayer(){
+        return new UserEntity(MOCK_ID_PAYER, MOCK_NAME, MOCK_DOCUMENT_CPF, MOCK_DOCUMENT_NUMBER, MOCK_EMAIL, MOCK_PASSWORD, MOCK_BALANCE);
+    }
+
+    private UserEntity returnObjectUserEntityPayee(){
+        return new UserEntity(MOCK_ID_PAYEE, MOCK_NAME, MOCK_DOCUMENT_CNPJ, MOCK_CNPJ_NUMBER, MOCK_EMAIL, MOCK_PASSWORD, MOCK_BALANCE);
+    }
+
+    private UserResponseDTO returnObjectUserResponseDTOPayer() {
+        return new UserResponseDTO(MOCK_ID_PAYER, MOCK_NAME, MOCK_DOCUMENT_CPF, MOCK_DOCUMENT_NUMBER, MOCK_EMAIL, MOCK_BALANCE);
+    }
+
+    private UserResponseDTO returnObjectUserResponseDTOPayee() {
+        return new UserResponseDTO(MOCK_ID_PAYEE, MOCK_NAME, MOCK_DOCUMENT_CNPJ, MOCK_CNPJ_NUMBER, MOCK_EMAIL, MOCK_BALANCE);
     }
 
 }
