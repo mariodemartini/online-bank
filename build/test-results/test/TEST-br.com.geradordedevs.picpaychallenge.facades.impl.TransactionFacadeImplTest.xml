@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="br.com.geradordedevs.picpaychallenge.facades.impl.TransactionFacadeImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-10T17:57:48" hostname="mario-Inspiron-3501" time="0.197">
-  <properties/>
-  <testcase name="transactionShoulReturnOk" classname="br.com.geradordedevs.picpaychallenge.facades.impl.TransactionFacadeImplTest" time="0.197"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
