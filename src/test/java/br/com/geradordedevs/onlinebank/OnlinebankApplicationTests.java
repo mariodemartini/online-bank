@@ -1,10 +1,10 @@
-package br.com.geradordedevs.picpaychallenge;
+package br.com.geradordedevs.onlinebank;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PicPayChallengeApplicationTests {
+class OnlinebankApplicationTests {
 
 	@Test
 	void contextLoads() {
