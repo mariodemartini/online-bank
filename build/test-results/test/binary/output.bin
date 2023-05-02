@@ -1,0 +1,1 @@
+ð15:33:16.370 [Test worker] INFO br.com.geradordedevs.picpaychallenge.services.impl.UserServiceImpl -- save a new user UserEntity{id=null, name=User, documentType='CPF', documentNumber='123.123.123-11', email=test@test.com, balance='100'}: 
