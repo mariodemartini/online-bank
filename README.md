@@ -1,4 +1,4 @@
-# PICPAY API
+# ONLINE-BANK API
 Project carried out as training in the Gerador de Devs.  
 The API executes financial transactions with validation of the defined criteria.  
 
@@ -15,11 +15,11 @@ What do you need to install to run the project?
 Clone the file using one of the options below:
 #### SSH
 ```
-git@github.com:mariodemartini/picpay.git
+git@github.com:mariodemartini/online-bank.git
 ```  
 #### HTTPS
 ```
-https://github.com/mariodemartini/picpay.git
+https://github.com/mariodemartini/online-bank.git
 ```  
 
 ### Code versioning best practices
