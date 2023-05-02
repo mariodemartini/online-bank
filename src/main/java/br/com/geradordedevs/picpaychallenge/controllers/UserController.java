@@ -31,12 +31,12 @@ public class UserController {
         return userFacade.findById(id);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public UserResponseDTO updateUser(@PathVariable Long id,@Valid @RequestBody UserRequestDTO userRequestDTO){
         return userFacade.updateUser(id, userRequestDTO);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id){
         userFacade.deleteUser(id);
     }
