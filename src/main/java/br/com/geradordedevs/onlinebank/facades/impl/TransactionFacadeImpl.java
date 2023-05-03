@@ -43,26 +43,29 @@ public class TransactionFacadeImpl implements TransactionFacade {
         Long idPayer = transactionRequestDTO.getPayer();
         Long idPayee = transactionRequestDTO.getPayee();
         BigDecimal value = transactionRequestDTO.getValue();
-        
-        UserEntity userPayee = userService.findById(idPayee);
+        double payment = value.doubleValue();
 
-        UserEntity userPayer = validation(idPayer, value);
+        if(payment <= 0) {
+            throw new TransactionException(TransactionEnum.WRONG_VALUE);
+        } else {
+            UserEntity userPayee = userService.findById(idPayee);
 
-        userPayer.setId(idPayer);
-        userPayer.setBalance(userPayer.getBalance().subtract(value));
-        userMapper.toDTO(userService.updateUser(idPayer, userPayer));
+            UserEntity userPayer = validation(idPayer, value);
 
-        userPayee.setId(idPayee);
-        userPayee.setBalance(userPayee.getBalance().add(value));
-        userMapper.toDTO(userService.updateUser(idPayee, userPayee));
+            userPayer.setId(idPayer);
+            userPayer.setBalance(userPayer.getBalance().subtract(value));
 
-        TransactionEntity transactionEntity = new TransactionEntity();
-        transactionEntity.setPayer(userPayer.getName());
-        transactionEntity.setPayee(userPayee.getName());
-        transactionEntity.setValue(value);
-        transactionMapper.toDTO(transactionService.saveTransaction(transactionEntity));
+            userPayee.setId(idPayee);
+            userPayee.setBalance(userPayee.getBalance().add(value));
 
-        return authorizationService.authorization();
+            TransactionEntity transactionEntity = new TransactionEntity();
+            transactionEntity.setPayer(userPayer.getName());
+            transactionEntity.setPayee(userPayee.getName());
+            transactionEntity.setValue(value);
+            transactionMapper.toDTO(transactionService.saveTransaction(transactionEntity));
+
+            return authorizationService.authorization();
+        }
     }
 
     @Override
