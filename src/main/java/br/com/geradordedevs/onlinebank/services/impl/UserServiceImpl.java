@@ -1,11 +1,12 @@
 package br.com.geradordedevs.onlinebank.services.impl;
 
 import br.com.geradordedevs.onlinebank.entities.UserEntity;
-import br.com.geradordedevs.onlinebank.enums.DocumentTypeEnum;
 import br.com.geradordedevs.onlinebank.exceptions.DocumentException;
 import br.com.geradordedevs.onlinebank.exceptions.EmailException;
+import br.com.geradordedevs.onlinebank.exceptions.UserException;
 import br.com.geradordedevs.onlinebank.exceptions.enums.DocumentEnum;
 import br.com.geradordedevs.onlinebank.exceptions.enums.EmailEnum;
+import br.com.geradordedevs.onlinebank.exceptions.enums.UserEnum;
 import br.com.geradordedevs.onlinebank.repositories.UserRepository;
 import br.com.geradordedevs.onlinebank.services.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +51,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity updateUser(Long id, UserEntity userEntity) {
         log.info("updating user {} - new informations: {} ", id, userEntity);
+        findById(id);
         userEntity.setId(id);
         return userRepository.save(userEntity);
     }
@@ -57,12 +59,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity findById(Long id) {
         log.info("find user {}", id);
-        return userRepository.findById(id).orElse(new UserEntity());
+        return userRepository.findById(id).orElseThrow(
+                ()-> new UserException(UserEnum.USER_NOT_FOUND));
     }
 
     @Override
     public void deleteUser(Long id) {
         log.info("delete user {}", id);
+        findById(id);
         userRepository.deleteById(id);
     }
 
