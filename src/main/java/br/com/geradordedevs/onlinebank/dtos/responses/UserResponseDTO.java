@@ -18,4 +18,5 @@ public class UserResponseDTO {
     private String documentNumber;
     private String email;
     private BigDecimal balance;
+
 }

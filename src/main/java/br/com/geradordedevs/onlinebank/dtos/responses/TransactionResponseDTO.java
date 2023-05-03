@@ -15,4 +15,5 @@ public class TransactionResponseDTO {
     private BigDecimal value;
     private String payer;
     private String payee;
+
 }
