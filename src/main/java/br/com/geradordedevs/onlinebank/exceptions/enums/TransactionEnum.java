@@ -11,6 +11,8 @@ public enum TransactionEnum {
 
     INVALID_TRANSACTION("INVALID_TRANSACTION", "Invalid transaction", 400),
 
+    WRONG_VALUE ("INVALID_TRANSACTION", "Wrong value", 400),
+
     TRANSACTION_NOT_FOUND ("TRANSACTION_NOT_FOUND", "Transaction doesn't exist", 404);
 
     private String code;
