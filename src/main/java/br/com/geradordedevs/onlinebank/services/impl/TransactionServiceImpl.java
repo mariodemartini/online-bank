@@ -1,6 +1,8 @@
 package br.com.geradordedevs.onlinebank.services.impl;
 
 import br.com.geradordedevs.onlinebank.entities.TransactionEntity;
+import br.com.geradordedevs.onlinebank.exceptions.TransactionException;
+import br.com.geradordedevs.onlinebank.exceptions.enums.TransactionEnum;
 import br.com.geradordedevs.onlinebank.repositories.TransactionRepository;
 import br.com.geradordedevs.onlinebank.services.TransactionService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +25,8 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public TransactionEntity findById(Long id){
         log.info("find transaction {}",id);
-        return transactionRepository.findById(id).orElse(new TransactionEntity());
+        return transactionRepository.findById(id).orElseThrow(
+                ()-> new TransactionException(TransactionEnum.TRANSACTION_NOT_FOUND));
     }
 
     @Override
