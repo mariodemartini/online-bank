@@ -43,29 +43,24 @@ public class TransactionFacadeImpl implements TransactionFacade {
         Long idPayer = transactionRequestDTO.getPayer();
         Long idPayee = transactionRequestDTO.getPayee();
         BigDecimal value = transactionRequestDTO.getValue();
-        double payment = value.doubleValue();
 
-        if(payment <= 0) {
-            throw new TransactionException(TransactionEnum.WRONG_VALUE);
-        } else {
-            UserEntity userPayee = userService.findById(idPayee);
+        UserEntity userPayer = validation(idPayer, value);
 
-            UserEntity userPayer = validation(idPayer, value);
+        UserEntity userPayee = userService.findById(idPayee);
 
-            userPayer.setId(idPayer);
-            userPayer.setBalance(userPayer.getBalance().subtract(value));
+        userPayer.setId(idPayer);
+        userPayer.setBalance(userPayer.getBalance().subtract(value));
 
-            userPayee.setId(idPayee);
-            userPayee.setBalance(userPayee.getBalance().add(value));
+        userPayee.setId(idPayee);
+        userPayee.setBalance(userPayee.getBalance().add(value));
 
-            TransactionEntity transactionEntity = new TransactionEntity();
-            transactionEntity.setPayer(userPayer.getName());
-            transactionEntity.setPayee(userPayee.getName());
-            transactionEntity.setValue(value);
-            transactionMapper.toDTO(transactionService.saveTransaction(transactionEntity));
+        TransactionEntity transactionEntity = new TransactionEntity();
+        transactionEntity.setPayer(userPayer.getName());
+        transactionEntity.setPayee(userPayee.getName());
+        transactionEntity.setValue(value);
+        transactionMapper.toDTO(transactionService.saveTransaction(transactionEntity));
 
-            return authorizationService.authorization();
-        }
+        return authorizationService.authorization();
     }
 
     @Override
@@ -80,10 +75,13 @@ public class TransactionFacadeImpl implements TransactionFacade {
 
     private UserEntity validation(Long idPayer, BigDecimal value){
         UserEntity userPayer = userService.findById(idPayer);
+        double payment = value.doubleValue();
         if(userPayer.getDocumentTypeEnum() == DocumentTypeEnum.CNPJ){
             throw new TransactionException(TransactionEnum.INVALID_TRANSACTION);
         } else if (userPayer.getBalance().compareTo(value) < 0) {
             throw new TransactionException(TransactionEnum.INVALID_TRANSACTION);
+        } else if(payment < 0){
+            throw new TransactionException(TransactionEnum.WRONG_VALUE);
         } else {
             return userPayer;
         }
