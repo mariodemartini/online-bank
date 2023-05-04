@@ -1,5 +1,6 @@
 package br.com.geradordedevs.onlinebank.services.impl;
 
+import br.com.geradordedevs.onlinebank.dtos.requests.LoginRequestDTO;
 import br.com.geradordedevs.onlinebank.entities.UserEntity;
 import br.com.geradordedevs.onlinebank.exceptions.DocumentException;
 import br.com.geradordedevs.onlinebank.exceptions.EmailException;
@@ -43,9 +44,9 @@ public class UserServiceImpl implements UserService {
             throw new DocumentException(DocumentEnum.INVALID_DOCUMENT);
         } else{
             userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+
             return userRepository.save(userEntity);
         }
-
     }
 
     @Override
@@ -53,6 +54,7 @@ public class UserServiceImpl implements UserService {
         log.info("updating user {} - new informations: {} ", id, userEntity);
         findById(id);
         userEntity.setId(id);
+
         return userRepository.save(userEntity);
     }
 
@@ -70,9 +72,23 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+    @Override
+    public void validatePassword(LoginRequestDTO loginRequestDTO) {
+        log.info("validating email username and password: {}", loginRequestDTO.getEmail());
+        UserEntity userEntity = userRepository.findByEmail(loginRequestDTO.getEmail());
+        if(userEntity == null ||
+                !passwordEncoder.matches(loginRequestDTO.getPassword(),
+                        userRepository.findByEmail(loginRequestDTO.getEmail()).getPassword())) {
+            log.warn("Invalid email username and/or password {}", loginRequestDTO.getEmail());
+            throw new UserException(UserEnum.INVALID_USER);
+        }
+    }
+
+
     private String documentNumberFormatting(String documentNumber){
         documentNumber = (documentNumber.replace(".","")
                 .replace("-","").replace("/","").replace(" ",""));
+
         return documentNumber;
     }
 }

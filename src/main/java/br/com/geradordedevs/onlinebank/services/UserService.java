@@ -1,5 +1,6 @@
 package br.com.geradordedevs.onlinebank.services;
 
+import br.com.geradordedevs.onlinebank.dtos.requests.LoginRequestDTO;
 import br.com.geradordedevs.onlinebank.entities.UserEntity;
 
 public interface UserService {
@@ -13,4 +14,6 @@ public interface UserService {
     UserEntity findById(Long id);
 
     void deleteUser(Long id);
+
+    void validatePassword(LoginRequestDTO loginRequestDTO);
 }
