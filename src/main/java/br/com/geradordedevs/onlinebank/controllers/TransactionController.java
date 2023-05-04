@@ -18,17 +18,19 @@ public class TransactionController {
     private TransactionFacade transactionFacade;
 
     @PostMapping
-    public AuthorizationResponseDTO transaction(@Valid @RequestBody TransactionRequestDTO transactionRequestDTO) throws Exception {
-        return transactionFacade.transaction(transactionRequestDTO);
+    public AuthorizationResponseDTO transaction(@Valid @RequestBody TransactionRequestDTO transactionRequestDTO,
+                                                @RequestHeader(required = false, value = "token") String token) throws Exception {
+        return transactionFacade.transaction(transactionRequestDTO, token);
     }
 
     @GetMapping
-    public List<TransactionResponseDTO> listTransactions(){
-        return transactionFacade.getTransactions();
+    public List<TransactionResponseDTO> listTransactions(@RequestHeader(required = false, value = "token") String token){
+        return transactionFacade.getTransactions(token);
     }
 
     @GetMapping("/{id}")
-    public TransactionResponseDTO findById(@PathVariable Long id){
-        return transactionFacade.findById(id);
+    public TransactionResponseDTO findById(@PathVariable Long id,
+                                           @RequestHeader(required = false, value = "token") String token){
+        return transactionFacade.findById(id, token);
     }
 }

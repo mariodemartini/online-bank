@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface TransactionFacade {
 
-    AuthorizationResponseDTO transaction(TransactionRequestDTO transactionRequestDTO) throws Exception;
+    AuthorizationResponseDTO transaction(TransactionRequestDTO transactionRequestDTO, String token) throws Exception;
 
-    TransactionResponseDTO findById(Long id);
+    TransactionResponseDTO findById(Long id, String token);
 
-    List<TransactionResponseDTO> getTransactions();
+    List<TransactionResponseDTO> getTransactions(String token);
 }

@@ -10,6 +10,7 @@ import br.com.geradordedevs.onlinebank.enums.DocumentTypeEnum;
 import br.com.geradordedevs.onlinebank.mappers.TransactionMapper;
 import br.com.geradordedevs.onlinebank.mappers.UserMapper;
 import br.com.geradordedevs.onlinebank.services.AuthorizationService;
+import br.com.geradordedevs.onlinebank.services.LoginService;
 import br.com.geradordedevs.onlinebank.services.TransactionService;
 import br.com.geradordedevs.onlinebank.services.UserService;
 import org.junit.Before;
@@ -42,6 +43,9 @@ public class TransactionFacadeImplTest {
     private UserService userService;
 
     @Mock
+    private LoginService loginService;
+
+    @Mock
     private AuthorizationService authorizationService;
 
     @Mock
@@ -65,6 +69,7 @@ public class TransactionFacadeImplTest {
     private final String MOCK_EMAIL = "test@test.com";
     private final String MOCK_PASSWORD ="123456789";
     private final BigDecimal MOCK_BALANCE = new BigDecimal(1000.00);
+    private static final String MOCK_TOKEN = "GOFMGFOMGOFMGOFMGOFMGOFMGFOMGOFMGOFMGOFM";
 
     @Before
     public void setupMock(){
@@ -88,17 +93,20 @@ public class TransactionFacadeImplTest {
 
     @Test
     public void findByIdShloudReturnOk() throws Exception{
-        assertEquals(returnObjectTransactionResponseDTO(), transactionFacade.findById(MOCK_ID));
+        loginService.validate(MOCK_TOKEN);
+        assertEquals(returnObjectTransactionResponseDTO(), transactionFacade.findById(MOCK_ID, MOCK_TOKEN));
     }
 
     @Test
     public void getTransactionsShouldReturnOK() throws Exception{
-        assertEquals(returnListTransactionResponseDTO(), transactionFacade.getTransactions());
+        loginService.validate(MOCK_TOKEN);
+        assertEquals(returnListTransactionResponseDTO(), transactionFacade.getTransactions(MOCK_TOKEN));
     }
 
     @Test
     public void transactionShoulReturnOk() throws Exception{
-        assertEquals(returnAuthorizationResponseDTO(), transactionFacade.transaction(returnObjectTransactionRequestDTO()));
+        loginService.validate(MOCK_TOKEN);
+        assertEquals(returnAuthorizationResponseDTO(), transactionFacade.transaction(returnObjectTransactionRequestDTO(), MOCK_TOKEN));
     }
 
     private AuthorizationResponseDTO returnAuthorizationResponseDTO() {

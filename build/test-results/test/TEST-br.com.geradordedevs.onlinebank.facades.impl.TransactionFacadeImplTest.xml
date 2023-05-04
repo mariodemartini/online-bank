@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.geradordedevs.onlinebank.facades.impl.TransactionFacadeImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-05-04T19:05:18" hostname="mario-Inspiron-3501" time="0.192">
+  <properties/>
+  <testcase name="getTransactionsShouldReturnOK" classname="br.com.geradordedevs.onlinebank.facades.impl.TransactionFacadeImplTest" time="0.192"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

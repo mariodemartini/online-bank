@@ -10,8 +10,8 @@ import br.com.geradordedevs.onlinebank.exceptions.TransactionException;
 import br.com.geradordedevs.onlinebank.exceptions.enums.TransactionEnum;
 import br.com.geradordedevs.onlinebank.facades.TransactionFacade;
 import br.com.geradordedevs.onlinebank.mappers.TransactionMapper;
-import br.com.geradordedevs.onlinebank.mappers.UserMapper;
 import br.com.geradordedevs.onlinebank.services.AuthorizationService;
+import br.com.geradordedevs.onlinebank.services.LoginService;
 import br.com.geradordedevs.onlinebank.services.TransactionService;
 import br.com.geradordedevs.onlinebank.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +36,14 @@ public class TransactionFacadeImpl implements TransactionFacade {
     private TransactionMapper transactionMapper;
 
     @Autowired
-    private UserMapper userMapper;
+    private LoginService loginService;
+
+
 
     @Override
-    public AuthorizationResponseDTO transaction(TransactionRequestDTO transactionRequestDTO) throws Exception {
+    public AuthorizationResponseDTO transaction(TransactionRequestDTO transactionRequestDTO, String token) throws Exception {
+        loginService.validate(token);
+
         Long idPayer = transactionRequestDTO.getPayer();
         Long idPayee = transactionRequestDTO.getPayee();
         BigDecimal value = transactionRequestDTO.getValue();
@@ -64,12 +68,16 @@ public class TransactionFacadeImpl implements TransactionFacade {
     }
 
     @Override
-    public TransactionResponseDTO findById(Long id) {
+    public TransactionResponseDTO findById(Long id, String token) {
+        loginService.validate(token);
+
         return transactionMapper.toDTO(transactionService.findById(id));
     }
 
     @Override
-    public List<TransactionResponseDTO> getTransactions() {
+    public List<TransactionResponseDTO> getTransactions(String token) {
+        loginService.validate(token);
+
         return transactionMapper.toListDTO(transactionService.getTransactions());
     }
 
